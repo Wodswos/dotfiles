@@ -1,5 +1,6 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
+-- setup package manager lazy.nvim
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
     "git",
@@ -13,13 +14,18 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-vim.g.maplearder = " " -- Mapleader?
+-- setup config
+require('config.globals')
+require('config.options')
 
---require("lazy").setup({
---  "folke/which-key.nvim",
---  { "folke/neoconf.nvim", cmd = "Neoconf"},
---  "folke/neodev.nvim",
---  "nvim-treesitter/nvim-treesitter"
---})
---
+-- setup plugin
+-- way 1
+-- require("lazy").setup({
+--   "folke/which-key.nvim",
+--   { "folke/neoconf.nvim", cmd = "Neoconf"},
+--   "folke/neodev.nvim",
+--   "nvim-treesitter/nvim-treesitter"
+-- })
+
+-- way 2
 require("lazy").setup("plugins")
